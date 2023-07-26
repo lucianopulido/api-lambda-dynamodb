@@ -14,6 +14,7 @@ const addTask = async (event) => {
 			title,
 			description,
 			createdAt,
+			done: false,
 		};
 
 		await dynamodb
@@ -26,11 +27,11 @@ const addTask = async (event) => {
 		console.log("netTask: ", newTask);
 
 		return {
-			status: 200,
+			status: 201,
 			body: newTask,
 		};
 	} catch (error) {
-		return error;
+		console.log(error);
 	}
 };
 
